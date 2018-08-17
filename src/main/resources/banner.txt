@@ -1,0 +1,8 @@
+${AnsiColor.GREEN}
+ _    __
+| |  / /__  ____  __  _______
+| | / / _ \/ __ \/ / / / ___/
+| |/ /  __/ / / / /_/ (__  )
+|___/\___/_/ /_/\____/____/
+${AnsiColor.BLUE}
+ ::: Venus ${application.formatted-version}    ::: Spring-Boot ${spring-boot.formatted-version}

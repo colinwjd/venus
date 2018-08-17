@@ -37,7 +37,6 @@ dependencies {
     compile('org.apache.commons:commons-lang3:3.7')
     runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('com.h2database:h2')
-	runtime('mysql:mysql-connector-java')
 	compileOnly('org.springframework.boot:spring-boot-configuration-processor')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')

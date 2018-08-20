@@ -84,7 +84,7 @@ public class Comment implements Serializable {
     private Integer isAuthor;
 
     /**
-     * 评论状态 0:正常 1:待审核 2:回收站
+     * 评论状态 0:已生效 1:待审核 2:回收站
      */
     private Integer status = 1;
 

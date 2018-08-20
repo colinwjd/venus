@@ -7,27 +7,29 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
- * 用户信息，可以是 博主 or 访客
+ * 文章类目
  *
  * @author Colin Wang
- * @date 2018/8/17
+ * @date 2018/8/18
  */
 @Data
 @Entity
-@Table(name = "venus_user")
-public class User implements Serializable {
+@Table(name = "venus_category")
+public class Category implements Serializable {
 
-    private static final long serialVersionUID = -1322691637504325950L;
+    private static final long serialVersionUID = -5731247580954789881L;
 
     /**
-     * 用户ID
+     * 类目ID
      */
     @Id
     @GeneratedValue
@@ -36,59 +38,36 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    @JsonIgnore
     @Column(name = "create_time", updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @JsonIgnore
     @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
-     * 用户名称
+     * 类目名称
      */
-    @NotBlank(message = "user name can not be empty.")
+    @NotBlank(message = "category name can not be empty.")
     private String name;
 
     /**
-     * 用户昵称
-     */
-    private String nick;
-
-    /**
-     * 密码
-     */
-    @JsonIgnore
-    private String password;
-
-    /**
-     * 邮箱
-     */
-    @Email(message = "E-mail address is illegal.")
-    private String email;
-
-    /**
-     * 头像
-     */
-    private String avatar;
-
-    /**
-     * 简介
+     * 类目说明
      */
     private String desc;
 
     /**
-     * 用户主页
+     * 类目地址
      */
+    @NotBlank(message = "category url can not be empty.")
     private String url;
 
     /**
-     * 最后登录时间
+     * 文章列表
      */
+    @ManyToMany(mappedBy = "categories")
     @JsonIgnore
-    @Column(name = "visit_time")
-    private Date visitTime;
+    private List<Post> posts = new ArrayList<>();
 }

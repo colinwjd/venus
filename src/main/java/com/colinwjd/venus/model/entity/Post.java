@@ -6,7 +6,6 @@ import lombok.Data;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -46,21 +45,20 @@ public class Post implements Serializable {
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
      * 作者 多对一
      */
+    @JoinColumn(name = "user_id")
     @ManyToOne(optional = false)
-    @JoinColumn(name = "id")
     private User user;
 
     /**
@@ -81,14 +79,12 @@ public class Post implements Serializable {
     /**
      * 文章类型内容 markdown格式
      */
-    @Column(name = "content_md")
     @Lob
     private String contentMd;
 
     /**
      * 页面类型内容 html格式
      */
-    @Column(name = "content_html")
     @Lob
     private String contentHtml;
 
@@ -111,13 +107,11 @@ public class Post implements Serializable {
     /**
      * 访问量
      */
-    @Column(name = "visit_count")
     private Long visitCount = 0L;
 
     /**
      * 是否禁用评论
      */
-    @Column(name = "disable_comment")
     private Integer disableComment = 0;
 
     /**
@@ -125,8 +119,8 @@ public class Post implements Serializable {
      */
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(name = "venus_post_category",
-            joinColumns = @JoinColumn(name = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id", nullable = false)
+            joinColumns = @JoinColumn(name = "post_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "cate_id", nullable = false)
     )
     private List<Category> categories = new ArrayList<>(3);
 
@@ -135,8 +129,8 @@ public class Post implements Serializable {
      */
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(name = "venus_post_tag",
-            joinColumns = @JoinColumn(name = "id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id", nullable = false)
+            joinColumns = @JoinColumn(name = "post_id", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", nullable = false)
     )
     private List<Tag> tags = new ArrayList<>(5);
 

@@ -37,13 +37,12 @@ public class Tag implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -59,7 +58,7 @@ public class Tag implements Serializable {
     /**
      * 文章列表
      */
-    @ManyToMany(mappedBy = "tags")
     @JsonIgnore
+    @ManyToMany(mappedBy = "tags")
     private List<Post> posts = new ArrayList<>();
 }

@@ -33,13 +33,12 @@ public class Menu implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -55,7 +54,7 @@ public class Menu implements Serializable {
     /**
      * 菜单顺序编号
      */
-    private Integer order;
+    private Integer number;
 
     /**
      * 菜单图标

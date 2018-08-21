@@ -36,15 +36,12 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
-    @JsonIgnore
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @JsonIgnore
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -88,7 +85,5 @@ public class User implements Serializable {
     /**
      * 最后登录时间
      */
-    @JsonIgnore
-    @Column(name = "visit_time")
     private Date visitTime;
 }

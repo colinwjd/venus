@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 相册
+ * 图库
  *
  * @author Colin Wang
  * @date 2018/8/20
@@ -33,13 +33,12 @@ public class Gallery implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -55,13 +54,11 @@ public class Gallery implements Serializable {
     /**
      * 拍摄时间
      */
-    @Column(name = "filming_time")
     private Date filmingTime;
 
     /**
      * 拍摄地点
      */
-    @Column(name = "filming_location")
     private String filmingLocation;
 
     /**
@@ -72,6 +69,5 @@ public class Gallery implements Serializable {
     /**
      * 缩略图地址
      */
-    @Column(name = "thumbnail_url")
     private String thumbnailUrl;
 }

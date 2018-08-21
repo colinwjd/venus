@@ -38,13 +38,12 @@ public class Category implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -67,7 +66,7 @@ public class Category implements Serializable {
     /**
      * 文章列表
      */
-    @ManyToMany(mappedBy = "categories")
     @JsonIgnore
+    @ManyToMany(mappedBy = "categories")
     private List<Post> posts = new ArrayList<>();
 }

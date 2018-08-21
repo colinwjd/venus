@@ -41,28 +41,26 @@ public class Comment implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 最后修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
      * 评论用户
      */
+    @JoinColumn(name = "user_id")
     @ManyToOne(targetEntity = User.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
     private User user;
 
     /**
      * 评论文章
      */
+    @JoinColumn(name = "post_id")
     @ManyToOne(targetEntity = Post.class, fetch = FetchType.EAGER)
-    @JoinColumn(name = "id")
-    @JsonIgnore
     private Post post;
 
     /**
@@ -80,7 +78,6 @@ public class Comment implements Serializable {
     /**
      * 是否作者本人评论 0:否 1:是
      */
-    @Column(name = "is_author")
     private Integer isAuthor;
 
     /**
@@ -98,5 +95,4 @@ public class Comment implements Serializable {
      */
     @Transient
     private List<Comment> childs;
-
 }

@@ -33,13 +33,12 @@ public class Timeline implements Serializable {
     /**
      * 创建时间
      */
-    @Column(name = "create_time", updatable = false)
+    @Column(updatable = false)
     private Date createTime;
 
     /**
      * 修改时间
      */
-    @Column(name = "modify_time")
     private Date modifyTime;
 
     /**
@@ -55,6 +54,5 @@ public class Timeline implements Serializable {
     /**
      * 事件发生时间
      */
-    @Column(name = "event_time")
     private Date eventTime;
 }

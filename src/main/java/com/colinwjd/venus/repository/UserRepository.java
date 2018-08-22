@@ -4,7 +4,7 @@ import com.colinwjd.venus.model.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * 用户持久层
+ * 用户数据访问接口
  *
  * @author Colin Wang
  * @date 2018/8/20
@@ -22,7 +22,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * 通过用户名和密码查询
      *
-     * @param name 用户名
+     * @param name     用户名
      * @param password 密码
      * @return User
      */
@@ -39,7 +39,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     /**
      * 通过邮箱和密码查询
      *
-     * @param email 用户邮箱
+     * @param email    用户邮箱
      * @param password 用户密码
      * @return User
      */

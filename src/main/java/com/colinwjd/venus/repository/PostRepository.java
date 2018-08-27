@@ -87,7 +87,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @return [年份, 月份, 文章数] 列表
      */
     @Query(value = "select year(create_time) as year, month(create_time) as month, count(*) as count from venus_post where status = 0 and type = 'post' group by year(create_time), month(create_time) order by year desc, month desc", nativeQuery = true)
-    List<Object[]> countPostGroupByYearAndMonth();
+    List<Object[]> countGroupByYearAndMonth();
 
     /**
      * 根据年份统计文章归档信息
@@ -95,7 +95,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @return [年份, 文章数] 列表
      */
     @Query(value = "select year(create_time) as year, count(*) as count from venus_post where status = 0 and type = 'post' group by year(create_time) order by year desc", nativeQuery = true)
-    List<Object[]> countPostGroupByYear();
+    List<Object[]> countGroupByYear();
 
     /**
      * 根据年份和月份查询文章
@@ -202,5 +202,5 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @param status 文章状态 0:已发布 1:草稿箱 2:回收站
      * @return 文章数
      */
-    Integer countPostByTypeAndStatus(String type, Integer status);
+    Integer countByTypeAndStatus(String type, Integer status);
 }

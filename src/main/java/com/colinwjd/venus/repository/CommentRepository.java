@@ -78,7 +78,7 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
      * @return 评论列表
      */
     @Query(value = "select * from venus_comment order by create_time desc limit ?1", nativeQuery = true)
-    List<Comment> findLastestN(int n);
+    List<Comment> findLatestN(int n);
 
     /**
      * 根据状态统计评论数量
@@ -86,5 +86,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long> {
      * @param status 评论状态 0:已生效 1:待审核 2:回收站
      * @return 评论数
      */
-    Integer countCommentByStatus(Integer status);
+    Integer countByStatus(Integer status);
 }

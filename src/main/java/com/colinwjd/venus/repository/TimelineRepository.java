@@ -21,5 +21,5 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long> {
      * @return 事件列表
      */
     @Query(value = "select * from venus_timeline order by event_time desc limit ?1", nativeQuery = true)
-    List<Timeline> findLastestN(int n);
+    List<Timeline> findLatestN(int n);
 }

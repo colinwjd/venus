@@ -21,5 +21,5 @@ public interface GalleryRepository extends JpaRepository<Gallery, Long> {
      * @return 图片列表
      */
     @Query(value = "select * from venus_gallery order by create_time desc limit ?1", nativeQuery = true)
-    List<Gallery> findLastestN(int n);
+    List<Gallery> findLatestN(int n);
 }

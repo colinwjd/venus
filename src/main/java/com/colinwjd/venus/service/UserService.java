@@ -3,8 +3,6 @@ package com.colinwjd.venus.service;
 import com.colinwjd.venus.model.entity.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.Date;
-
 /**
  * 用户服务
  *

@@ -180,6 +180,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> relatedPosts(Post post) {
+        // TODO 取一个关键词查询可能效果更好
         List<String> keywords = this.keywords(post, 3);
         Set<Post> posts = new HashSet<>();
         keywords.forEach(keyword -> {

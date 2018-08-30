@@ -15,7 +15,7 @@ import java.util.List;
  * @author Colin Wang
  * @date 2018/8/27
  */
-public interface PostService {
+public interface PostService extends SearchService<Post> {
 
     /**
      * 保存文章
@@ -73,15 +73,6 @@ public interface PostService {
      * @return 文章分页
      */
     Page<Post> findByType(String type, Pageable pageable);
-
-    /**
-     * 通过关键词搜索文章 分页
-     *
-     * @param keyword  关键词
-     * @param pageable 分页信息
-     * @return 文章分页
-     */
-    Page<Post> search(String keyword, Pageable pageable);
 
     /**
      * 通过类型和状态查询文章
@@ -223,4 +214,13 @@ public interface PostService {
      * @return 对应状态的文章数量
      */
     Integer countByStatus(Integer status);
+
+    /**
+     * 文章关键词
+     *
+     * @param post 文章
+     * @param num  关键词个数
+     * @return 关键词列表
+     */
+    List<String> keywords(Post post, Integer num);
 }

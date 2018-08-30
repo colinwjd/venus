@@ -38,5 +38,9 @@ spring:
     multipart:
       max-file-size: 5MB
 
+  cache:
+    type: caffeine
+
+
 logging:
   file: ./logs/venus.log

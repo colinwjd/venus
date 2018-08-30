@@ -170,22 +170,31 @@ public interface PostRepository extends JpaRepository<Post, Long> {
     Page<Post> findByTitleLike(String keyword, Pageable pageable);
 
     /**
+     * 文章标题或文章内容模糊搜索
+     *
+     * @param keyword 关键词
+     * @return 文章列表
+     */
+    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content_md like '%=:keyword%' or content_html like '%=:keyword%'", nativeQuery = true)
+    List<Post> findByTitleLikeOrContentLike(@Param("keyword") String keyword);
+
+    /**
      * 文章标题或文章内容模糊搜索 分页
      *
      * @param keyword  关键词
      * @param pageable 分页信息
      * @return 文章分页
      */
-    @Query(value = "select * from venus_post where status = 0 and type='post' and title like '%=:keyword%' or content_md like '%=:keyword%' or content_html like '%=:keyword%'", nativeQuery = true)
-    Page<Post> findByTitleLikeOrContentLike(String keyword, Pageable pageable);
+    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content_md like '%=:keyword%' or content_html like '%=:keyword%'", nativeQuery = true)
+    Page<Post> findByTitleLikeOrContentLike(@Param("keyword") String keyword, Pageable pageable);
 
     /**
-     * 通过状态查询文章并根据访问量倒序排序
+     * 通过类型查询文章并根据访问量倒序排序
      *
-     * @param status 文章状态 0:已发布 1:草稿箱 2:回收站
+     * @param type 文章类型 post or page
      * @return 文章列表
      */
-    List<Post> findByStatusOrderByVisitCountDesc(Integer status);
+    List<Post> findByTypeOrderByVisitCountDesc(String type);
 
     /**
      * 获取全部文章阅读总量

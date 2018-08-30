@@ -91,6 +91,11 @@ public class User implements UserDetails {
     private String url;
 
     /**
+     * GitHub地址
+     */
+    private String github;
+
+    /**
      * 最后登录时间
      */
     private Date visitTime;

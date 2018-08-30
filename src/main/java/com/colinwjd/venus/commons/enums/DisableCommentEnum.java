@@ -9,14 +9,14 @@ package com.colinwjd.venus.commons.enums;
 public enum DisableCommentEnum {
 
     /**
-     * 禁用评论
-     */
-    DISABLE(1),
-
-    /**
      * 开启评论
      */
-    ENABLE(0);
+    ENABLE(0),
+
+    /**
+     * 禁用评论
+     */
+    DISABLE(1);
 
     private int value;
 

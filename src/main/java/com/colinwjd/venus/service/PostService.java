@@ -223,20 +223,4 @@ public interface PostService {
      * @return 对应状态的文章数量
      */
     Integer countByStatus(Integer status);
-
-    /**
-     * 生成RSS
-     *
-     * @param posts 文章列表
-     * @return RSS字符串
-     */
-    String generateRss(List<Post> posts);
-
-    /**
-     * 生成SiteMap
-     *
-     * @param posts 文章列表
-     * @return SiteMap字符串
-     */
-    String generateSiteMap(List<Post> posts);
 }

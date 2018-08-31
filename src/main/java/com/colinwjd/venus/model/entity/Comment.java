@@ -93,5 +93,5 @@ public class Comment implements Serializable {
      * 子评论列表
      */
     @Transient
-    private List<Comment> childs;
+    private List<Comment> children;
 }

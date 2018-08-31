@@ -35,7 +35,7 @@ public class Post implements Serializable {
     private static final long serialVersionUID = -8431474702714505942L;
 
     /**
-     * 文章ID
+     * 文章或页面ID
      */
     @Id
     @GeneratedValue
@@ -67,26 +67,26 @@ public class Post implements Serializable {
     private String title;
 
     /**
-     * 文章类型 post or page
+     * 类型 post or page
      */
     private String type = "post";
 
     /**
-     * 摘要
+     * 文章摘要
      */
     private String summary;
 
     /**
-     * 文章类型内容 markdown格式
+     * 内容 markdown格式
      */
     @Lob
     private String contentMd;
 
     /**
-     * 页面类型内容 html格式
+     * 内容 html格式
      */
     @Lob
-    private String contentHtml;
+    private String content;
 
     /**
      * 地址
@@ -115,7 +115,7 @@ public class Post implements Serializable {
     private Integer disableComment = 0;
 
     /**
-     * 文章分类
+     * 文章类目
      */
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     @JoinTable(name = "venus_post_category",
@@ -135,7 +135,7 @@ public class Post implements Serializable {
     private List<Tag> tags = new ArrayList<>(5);
 
     /**
-     * 文章评论
+     * 评论
      */
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
     private List<Comment> comments = new ArrayList<>();

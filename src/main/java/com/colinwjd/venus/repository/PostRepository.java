@@ -175,7 +175,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @param keyword 关键词
      * @return 文章列表
      */
-    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content_md like '%=:keyword%' or content_html like '%=:keyword%'", nativeQuery = true)
+    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content like '%=:keyword%'", nativeQuery = true)
     List<Post> findByTitleLikeOrContentLike(@Param("keyword") String keyword);
 
     /**
@@ -185,7 +185,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      * @param pageable 分页信息
      * @return 文章分页
      */
-    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content_md like '%=:keyword%' or content_html like '%=:keyword%'", nativeQuery = true)
+    @Query(value = "select * from venus_post where status = 0 and type = 'post' and title like '%=:keyword%' or content like '%=:keyword%'", nativeQuery = true)
     Page<Post> findByTitleLikeOrContentLike(@Param("keyword") String keyword, Pageable pageable);
 
     /**
@@ -201,7 +201,7 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      *
      * @return 阅读量
      */
-    @Query(value = "select sum(visit_count) from venus_post", nativeQuery = true)
+    @Query(value = "select sum(visit_count) from venus_post where type = 'post'", nativeQuery = true)
     Long getTotalVisitCount();
 
     /**

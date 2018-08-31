@@ -73,7 +73,7 @@ public class PostServiceImpl implements PostService {
         List<Post> posts = postRepository.findByType(PostTypeEnum.POST.getValue());
         if (posts != null && !posts.isEmpty()) {
             posts.forEach(post -> {
-                post.setSummary(HanLP.getSummary(post.getContentMd(), wordCount));
+                post.setSummary(HanLP.getSummary(post.getContent(), wordCount));
                 postRepository.save(post);
             });
         }
@@ -183,9 +183,7 @@ public class PostServiceImpl implements PostService {
         // TODO 取一个关键词查询可能效果更好
         List<String> keywords = this.keywords(post, 3);
         Set<Post> posts = new HashSet<>();
-        keywords.forEach(keyword -> {
-            posts.addAll(this.search(keyword));
-        });
+        keywords.forEach(keyword -> posts.addAll(this.search(keyword)));
         return new ArrayList<>(posts);
     }
 
@@ -201,7 +199,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<String> keywords(Post post, Integer num) {
-        return HanLP.extractKeyword(post.getContentMd(), num);
+        return HanLP.extractKeyword(post.getContent(), num);
     }
 
     @Override

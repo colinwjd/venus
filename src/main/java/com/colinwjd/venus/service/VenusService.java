@@ -21,4 +21,6 @@ public interface VenusService {
      * @return SiteMap字符串
      */
     String generateSiteMap();
+
+    //TODO 备份服务、邮件服务
 }

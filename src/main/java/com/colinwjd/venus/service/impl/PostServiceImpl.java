@@ -72,6 +72,7 @@ public class PostServiceImpl implements PostService {
     public void updateSummaryWordCount(Integer wordCount) {
         List<Post> posts = postRepository.findByType(PostTypeEnum.POST.getValue());
         if (posts != null && !posts.isEmpty()) {
+            // TODO post.content需要去除html标签
             posts.forEach(post -> post.setSummary(HanLP.getSummary(post.getContent(), wordCount)));
             postRepository.saveAll(posts);
         }
@@ -197,6 +198,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<String> keywords(Post post, Integer num) {
+        // TODO post.content需要去除html标签
         return HanLP.extractKeyword(post.getContent(), num);
     }
 

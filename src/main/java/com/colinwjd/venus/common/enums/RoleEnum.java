@@ -1,4 +1,4 @@
-package com.colinwjd.venus.commons.enums;
+package com.colinwjd.venus.common.enums;
 
 /**
  * 用户角色枚举

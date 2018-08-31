@@ -1,7 +1,7 @@
 package com.colinwjd.venus.service.impl;
 
-import com.colinwjd.venus.commons.enums.PostStatusEnum;
-import com.colinwjd.venus.commons.enums.PostTypeEnum;
+import com.colinwjd.venus.common.enums.PostStatusEnum;
+import com.colinwjd.venus.common.enums.PostTypeEnum;
 import com.colinwjd.venus.model.entity.Category;
 import com.colinwjd.venus.model.entity.Post;
 import com.colinwjd.venus.model.entity.Tag;
@@ -72,10 +72,8 @@ public class PostServiceImpl implements PostService {
     public void updateSummaryWordCount(Integer wordCount) {
         List<Post> posts = postRepository.findByType(PostTypeEnum.POST.getValue());
         if (posts != null && !posts.isEmpty()) {
-            posts.forEach(post -> {
-                post.setSummary(HanLP.getSummary(post.getContent(), wordCount));
-                postRepository.save(post);
-            });
+            posts.forEach(post -> post.setSummary(HanLP.getSummary(post.getContent(), wordCount)));
+            postRepository.saveAll(posts);
         }
     }
 

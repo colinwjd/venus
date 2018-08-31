@@ -1,6 +1,6 @@
 package com.colinwjd.venus.model.entity;
 
-import com.colinwjd.venus.commons.enums.RoleEnum;
+import com.colinwjd.venus.common.enums.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

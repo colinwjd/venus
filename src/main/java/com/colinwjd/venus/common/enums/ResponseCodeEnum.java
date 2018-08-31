@@ -1,4 +1,4 @@
-package com.colinwjd.venus.commons.enums;
+package com.colinwjd.venus.common.enums;
 
 /**
  * 响应码枚举

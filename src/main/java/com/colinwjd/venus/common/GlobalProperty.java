@@ -1,6 +1,4 @@
-package com.colinwjd.venus.commons;
-
-import com.colinwjd.venus.commons.enums.DisableCommentEnum;
+package com.colinwjd.venus.common;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,21 +1,21 @@
-package com.colinwjd.venus.commons.enums;
+package com.colinwjd.venus.common.enums;
 
 /**
- * 文章状态枚举
+ * 评论状态枚举
  *
  * @author Colin Wang
  * @date 2018/8/20
  */
-public enum PostStatusEnum {
+public enum CommentStatusEnum {
 
-    PUBLISHED(0, "已发布"),
-    DRAFT(1, "草稿箱"),
+    PUBLISHED(0, "已生效"),
+    CHECKING(1, "待审核"),
     RECYCLE(2, "回收站");
 
     private int value;
     private String desc;
 
-    PostStatusEnum(int value, String desc) {
+    CommentStatusEnum(int value, String desc) {
         this.value = value;
         this.desc = desc;
     }

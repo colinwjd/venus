@@ -50,7 +50,7 @@ public class PostServiceImpl implements PostService {
         Optional<Post> post = postRepository.findById(id);
         if (post.isPresent()) {
             postRepository.deleteById(id);
-            log.debug("deleted post: " + post.get().getTitle());
+            log.debug("post deleted: " + post.get().getTitle());
         }
         return post.orElse(null);
     }

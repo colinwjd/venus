@@ -2,6 +2,7 @@ package com.colinwjd.venus.service;
 
 import com.colinwjd.venus.model.entity.Comment;
 import com.colinwjd.venus.model.entity.Post;
+import com.colinwjd.venus.model.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -119,6 +120,42 @@ public interface CommentService extends SearchService<Comment> {
      * @return 评论分页
      */
     Page<Comment> findByPostAndStatusNot(Post post, Integer status, Pageable pageable);
+
+    /**
+     * 通过用户查询评论
+     *
+     * @param user 用户
+     * @return 评论列表
+     */
+    List<Comment> findByUser(User user);
+
+    /**
+     * 通过用户查询评论 分页
+     *
+     * @param user     用户
+     * @param pageable 分页信息
+     * @return 评论分页
+     */
+    Page<Comment> findByUser(User user, Pageable pageable);
+
+    /**
+     * 通过用户和状态查询评论
+     *
+     * @param user   用户
+     * @param status 评论状态 0:已生效 1:待审核 2:回收站
+     * @return 评论列表
+     */
+    List<Comment> findByUserAndStatus(User user, Integer status);
+
+    /**
+     * 通过用户和状态查询评论 分页
+     *
+     * @param user     用户
+     * @param status   评论状态 0:已生效 1:待审核 2:回收站
+     * @param pageable 分页信息
+     * @return 评论分页
+     */
+    Page<Comment> findByUserAndStatus(User user, Integer status, Pageable pageable);
 
     /**
      * 获取最新的N条评论

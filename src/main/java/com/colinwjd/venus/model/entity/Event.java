@@ -11,15 +11,15 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 时间轴
+ * 时间轴(事件)
  *
  * @author Colin Wang
  * @date 2018/8/20
  */
 @Data
 @Entity
-@Table(name = "venus_timeline")
-public class Timeline implements Serializable {
+@Table(name = "venus_event")
+public class Event implements Serializable {
 
     private static final long serialVersionUID = -5722423216191926834L;
 
@@ -50,9 +50,4 @@ public class Timeline implements Serializable {
      * 事件内容
      */
     private String content;
-
-    /**
-     * 事件发生时间
-     */
-    private Date eventTime;
 }

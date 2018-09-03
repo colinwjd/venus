@@ -1,6 +1,6 @@
 package com.colinwjd.venus.repository;
 
-import com.colinwjd.venus.model.entity.Timeline;
+import com.colinwjd.venus.model.entity.Event;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -12,7 +12,7 @@ import java.util.List;
  * @author Colin Wang
  * @date 2018/8/22
  */
-public interface TimelineRepository extends JpaRepository<Timeline, Long> {
+public interface EventRepository extends JpaRepository<Event, Long> {
 
     /**
      * 查询最新的N条事件
@@ -20,6 +20,6 @@ public interface TimelineRepository extends JpaRepository<Timeline, Long> {
      * @param n 数量
      * @return 事件列表
      */
-    @Query(value = "select * from venus_timeline order by event_time desc limit ?1", nativeQuery = true)
-    List<Timeline> findLatestN(int n);
+    @Query(value = "select * from venus_event order by create_time desc limit ?1", nativeQuery = true)
+    List<Event> findLatestN(int n);
 }

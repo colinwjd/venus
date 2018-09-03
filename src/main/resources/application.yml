@@ -41,6 +41,5 @@ spring:
   cache:
     type: caffeine
 
-
 logging:
   file: ./logs/venus.log

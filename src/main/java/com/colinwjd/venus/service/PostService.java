@@ -3,7 +3,7 @@ package com.colinwjd.venus.service;
 import com.colinwjd.venus.model.entity.Category;
 import com.colinwjd.venus.model.entity.Post;
 import com.colinwjd.venus.model.entity.Tag;
-import com.colinwjd.venus.model.vo.Archive;
+import com.colinwjd.venus.model.bo.Archive;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

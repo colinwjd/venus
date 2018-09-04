@@ -1,4 +1,4 @@
-package com.colinwjd.venus.model.vo;
+package com.colinwjd.venus.model.bo;
 
 import com.colinwjd.venus.model.entity.Post;
 import lombok.Data;

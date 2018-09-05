@@ -72,4 +72,12 @@ public class JsonResp<T> implements Serializable {
     public static <T> JsonResp build(Integer code, String message, T data, Map<String, Object> extra) {
         return new JsonResp<T>(code, message, data, extra);
     }
+
+    public static <T> JsonResp httpStatus(HttpStatus status) {
+        return new JsonResp<T>(status.value(), status.getReasonPhrase());
+    }
+
+    public static <T> JsonResp httpStatus(HttpStatus status, T data) {
+        return new JsonResp<T>(status.value(), status.getReasonPhrase(), data);
+    }
 }

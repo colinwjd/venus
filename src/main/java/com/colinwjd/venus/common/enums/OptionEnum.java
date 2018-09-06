@@ -29,9 +29,9 @@ public enum OptionEnum {
     INDEX_POST_NUM("index_post_num"),
 
     /**
-     * 是否已经安装
+     * 是否已经初始化
      */
-    IS_INSTALL("is_install"),
+    INITIALIZED("initialized"),
 
     /**
      * RSS显示文章条数

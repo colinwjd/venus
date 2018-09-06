@@ -17,67 +17,74 @@ public class JsonResp<T> implements Serializable {
 
     private static final long serialVersionUID = 317009052871918210L;
 
-    protected Integer code;
+    /**
+     * 响应编码
+     */
+    private Integer code;
 
-    protected String message;
+    /**
+     * 响应信息
+     */
+    private String message;
 
-    protected T data;
+    /**
+     * 响应数据
+     */
+    private T data;
 
-    protected Map<String, Object> extra;
+    /**
+     * 额外信息
+     */
+    private Map<String, Object> extra;
 
-    public JsonResp() {
-        this.code = HttpStatus.OK.value();
-        this.message = HttpStatus.OK.getReasonPhrase();
-    }
-
-    public JsonResp(Integer code, String message) {
-        this(code, message, null, null);
-    }
-
-    public JsonResp(Integer code, String message, T data) {
-        this(code, message, data, null);
-    }
-
-    public JsonResp(Integer code, String message, T data, Map<String, Object> extra) {
+    private JsonResp(Integer code, String message, T data, Map<String, Object> extra) {
         this.code = code;
         this.message = message;
         this.data = data;
         this.extra = extra;
     }
 
-    public static <T> JsonResp success() {
-        return new JsonResp<T>();
+    public static <T> JsonResp<T> success() {
+        return httpStatus(HttpStatus.OK);
     }
 
-    public static <T> JsonResp success(T data) {
-        return new JsonResp<T>(HttpStatus.OK.value(), HttpStatus.OK.getReasonPhrase(), data);
+    public static <T> JsonResp<T> success(T data) {
+        return httpStatus(HttpStatus.OK, data);
     }
 
-    public static <T> JsonResp success(String message, T data) {
-        return new JsonResp<T>(HttpStatus.OK.value(), message, data);
+    public static <T> JsonResp<T> success(T data, Map<String, Object> extra) {
+        return httpStatus(HttpStatus.OK, data, extra);
     }
 
-    public static <T> JsonResp success(String message, T data, Map<String, Object> extra) {
-        return new JsonResp<T>(HttpStatus.OK.value(), message, data, extra);
+    public static <T> JsonResp<T> success(String message, T data) {
+        return build(HttpStatus.OK.value(), message, data);
     }
 
-    public static <T> JsonResp build(Integer code, String message) {
-        return new JsonResp<T>(code, message);
+    public static <T> JsonResp<T> success(String message, T data, Map<String, Object> extra) {
+        return build(HttpStatus.OK.value(), message, data, extra);
     }
 
-    public static <T> JsonResp build(Integer code, String message, T data) {
-        return new JsonResp<T>(code, message, data);
+    public static <T> JsonResp<T> httpStatus(HttpStatus status) {
+        return build(status.value(), status.getReasonPhrase());
     }
 
-    public static <T> JsonResp build(Integer code, String message, T data, Map<String, Object> extra) {
-        return new JsonResp<T>(code, message, data, extra);
+    public static <T> JsonResp<T> httpStatus(HttpStatus status, T data) {
+        return build(status.value(), status.getReasonPhrase(), data);
     }
 
-    public static <T> JsonResp httpStatus(HttpStatus status) {
-        return new JsonResp<T>(status.value(), status.getReasonPhrase());
+    public static <T> JsonResp<T> httpStatus(HttpStatus status, T data, Map<String, Object> extra) {
+        return build(status.value(), status.getReasonPhrase(), data, extra);
     }
 
-    public static <T> JsonResp httpStatus(HttpStatus status, T data) {
-        return new JsonResp<T>(status.value(), status.getReasonPhrase(), data);
+    public static <T> JsonResp<T> build(Integer code, String message) {
+        return build(code, message, null, null);
+    }
+
+    public static <T> JsonResp<T> build(Integer code, String message, T data) {
+        return build(code, message, data, null);
+    }
+
+    public static <T> JsonResp<T> build(Integer code, String message, T data, Map<String, Object> extra) {
+        return new JsonResp<>(code, message, data, extra);
     }
 }

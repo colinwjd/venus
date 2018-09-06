@@ -52,4 +52,28 @@ public interface UserService extends UserDetailsService {
      * @return 用户
      */
     User loginByEmail(String email, String password);
+
+    /**
+     * 通过ID查询用户
+     *
+     * @param id 用户ID
+     * @return 用户
+     */
+    User findById(Long id);
+
+    /**
+     * 通过名称查询用户
+     *
+     * @param name 用户名称
+     * @return 用户
+     */
+    User findByName(String name);
+
+    /**
+     * 通过邮箱查询用户
+     *
+     * @param email 用户邮箱
+     * @return 用户
+     */
+    User findByEmail(String email);
 }

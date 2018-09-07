@@ -31,13 +31,13 @@ public class TagApiController {
     }
 
     @GetMapping("/all")
-    public JsonResp<List<Tag>> all() {
+    public JsonResp<List<Tag>> findAll() {
         List<Tag> tags = tagService.findAll();
         return CollectionUtils.isEmpty(tags) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(tags);
     }
 
     @GetMapping("/{url}")
-    public JsonResp<Tag> find(@PathVariable String url) {
+    public JsonResp<Tag> findByUrl(@PathVariable String url) {
         Tag tag = tagService.findByUrl(url);
         return tag == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(tag);
     }

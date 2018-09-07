@@ -104,6 +104,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public Post findByIdAndType(Long id, String type) {
+        return postRepository.findByIdAndType(id, type);
+    }
+
+    @Override
     public Post findByUrl(String url) {
         return postRepository.findByUrl(url);
     }

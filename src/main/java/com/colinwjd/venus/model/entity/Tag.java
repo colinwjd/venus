@@ -1,6 +1,5 @@
 package com.colinwjd.venus.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -58,7 +57,6 @@ public class Tag implements Serializable {
     /**
      * 文章列表
      */
-    @JsonIgnore
     @ManyToMany(mappedBy = "tags")
     private List<Post> posts = new ArrayList<>();
 }

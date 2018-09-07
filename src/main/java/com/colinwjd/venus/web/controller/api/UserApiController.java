@@ -2,7 +2,9 @@ package com.colinwjd.venus.web.controller.api;
 
 import com.colinwjd.venus.model.bo.JsonResp;
 import com.colinwjd.venus.model.entity.User;
+import com.colinwjd.venus.model.vo.UserVO;
 import com.colinwjd.venus.service.UserService;
+import org.apache.commons.beanutils.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +30,9 @@ public class UserApiController {
     }
 
     @GetMapping("/{name}")
-    public JsonResp<User> user(@PathVariable String name) {
+    public JsonResp<UserVO> findByName(@PathVariable String name) {
         User user = userService.findByName(name);
-        return user == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(user);
+        UserVO userVO = (UserVO) ConvertUtils.convert(user, UserVO.class);
+        return userVO == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(userVO);
     }
 }

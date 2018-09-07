@@ -102,6 +102,15 @@ public interface PostService extends SearchService<Post> {
     Post findById(Long id);
 
     /**
+     * 通过ID和类型查询文章
+     *
+     * @param id   文章ID
+     * @param type 文章类型
+     * @return 文章
+     */
+    Post findByIdAndType(Long id, String type);
+
+    /**
      * 通过地址查询文章
      *
      * @param url 文章地址

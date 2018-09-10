@@ -3,7 +3,7 @@ package com.colinwjd.venus.model.vo;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 图库 视图对象
@@ -23,13 +23,13 @@ public class GalleryVO {
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 最后修改时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     /**
      * 图片名称
@@ -45,7 +45,7 @@ public class GalleryVO {
      * 拍摄时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date filmingTime;
+    private LocalDateTime filmingTime;
 
     /**
      * 拍摄地点

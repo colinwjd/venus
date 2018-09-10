@@ -1,6 +1,11 @@
 package com.colinwjd.venus.model.vo;
 
+import com.colinwjd.venus.model.entity.Category;
+import lombok.Builder;
 import lombok.Data;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 类目 视图对象
@@ -9,6 +14,7 @@ import lombok.Data;
  * @date 2018/9/7
  */
 @Data
+@Builder
 public class CategoryVO {
 
     /**
@@ -25,4 +31,19 @@ public class CategoryVO {
      * 类目地址
      */
     private String url;
+
+    public static CategoryVO buildWith(Category category) {
+        return CategoryVO.builder()
+                .name(category.getName())
+                .desc(category.getDesc())
+                .url(category.getUrl())
+                .build();
+    }
+
+    public static List<CategoryVO> buildWith(List<Category> categories) {
+        if (categories == null) return null;
+        List<CategoryVO> result = new ArrayList<>(categories.size());
+        categories.forEach(category -> result.add(buildWith(category)));
+        return result;
+    }
 }

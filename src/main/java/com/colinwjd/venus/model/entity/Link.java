@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 友情链接
@@ -34,12 +34,12 @@ public class Link implements Serializable {
      * 创建时间
      */
     @Column(updatable = false)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 最后修改时间
      */
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     /**
      * 友情链接名称

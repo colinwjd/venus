@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 配置项
@@ -35,12 +35,12 @@ public class Option implements Serializable {
      * 创建时间
      */
     @Column(updatable = false)
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 最后修改时间
      */
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     /**
      * 配置项名称

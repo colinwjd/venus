@@ -1,9 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
+import com.colinwjd.venus.model.entity.Post;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,6 +16,7 @@ import java.util.List;
  * @date 2018/9/6
  */
 @Data
+@Builder
 public class PostVO {
 
     /**
@@ -24,18 +28,18 @@ public class PostVO {
      * 创建时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     /**
      * 最后修改时间
      */
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date modifyTime;
+    private LocalDateTime modifyTime;
 
     /**
-     * 作者名称
+     * 作者
      */
-    private String user;
+    private UserVO user;
 
     /**
      * 标题
@@ -80,10 +84,36 @@ public class PostVO {
     /**
      * 文章类目
      */
-    private List<String> categories;
+    private List<CategoryVO> categories;
 
     /**
      * 文章标签
      */
-    private List<String> tags;
+    private List<TagVO> tags;
+
+    public static PostVO buildWith(Post post) {
+        return PostVO.builder()
+                .id(post.getId())
+                .createTime(post.getCreateTime())
+                .modifyTime(post.getModifyTime())
+                .user(UserVO.buildWith(post.getUser()))
+                .title(post.getTitle())
+                .summary(post.getSummary())
+                .contentMd(post.getContentMd())
+                .content(post.getContent())
+                .url(post.getUrl())
+                .thumbnail(post.getThumbnail())
+                .visitCount(post.getVisitCount())
+                .disableComment(post.getDisableComment())
+                .categories(CategoryVO.buildWith(post.getCategories()))
+                .tags(TagVO.buildWith(post.getTags()))
+                .build();
+    }
+
+    public static List<PostVO> buildWith(List<Post> posts) {
+        if (posts == null) return null;
+        List<PostVO> result = new ArrayList<>(posts.size());
+        posts.forEach(post -> result.add(buildWith(post)));
+        return result;
+    }
 }

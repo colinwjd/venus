@@ -1,7 +1,7 @@
 package com.colinwjd.venus.web.controller.api;
 
 import com.colinwjd.venus.model.bo.JsonResp;
-import com.colinwjd.venus.model.entity.Tag;
+import com.colinwjd.venus.model.vo.TagVO;
 import com.colinwjd.venus.service.TagService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,14 +31,14 @@ public class TagApiController {
     }
 
     @GetMapping("/all")
-    public JsonResp<List<Tag>> findAll() {
-        List<Tag> tags = tagService.findAll();
+    public JsonResp<List<TagVO>> findAll() {
+        List<TagVO> tags = TagVO.buildWith(tagService.findAll());
         return CollectionUtils.isEmpty(tags) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(tags);
     }
 
     @GetMapping("/{url}")
-    public JsonResp<Tag> findByUrl(@PathVariable String url) {
-        Tag tag = tagService.findByUrl(url);
+    public JsonResp<TagVO> findByUrl(@PathVariable String url) {
+        TagVO tag = TagVO.buildWith(tagService.findByUrl(url));
         return tag == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(tag);
     }
 }

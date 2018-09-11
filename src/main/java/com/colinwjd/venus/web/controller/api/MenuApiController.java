@@ -1,7 +1,7 @@
 package com.colinwjd.venus.web.controller.api;
 
 import com.colinwjd.venus.model.bo.JsonResp;
-import com.colinwjd.venus.model.entity.Menu;
+import com.colinwjd.venus.model.vo.MenuVO;
 import com.colinwjd.venus.service.MenuService;
 import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +30,8 @@ public class MenuApiController {
     }
 
     @GetMapping("/all")
-    public JsonResp<List<Menu>> findAll() {
-        List<Menu> menus = menuService.findAll();
+    public JsonResp<List<MenuVO>> findAll() {
+        List<MenuVO> menus = MenuVO.buildWith(menuService.findAll());
         return CollectionUtils.isEmpty(menus) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(menus);
     }
 }

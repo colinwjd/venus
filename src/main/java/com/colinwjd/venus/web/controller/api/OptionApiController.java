@@ -4,6 +4,7 @@ import com.colinwjd.venus.common.enums.OptionEnum;
 import com.colinwjd.venus.model.bo.JsonResp;
 import com.colinwjd.venus.model.entity.Option;
 import com.colinwjd.venus.service.OptionService;
+import org.apache.commons.collections4.MapUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,7 @@ public class OptionApiController {
         options.remove(OptionEnum.MAIL_FROM_NAME.getValue());
         options.remove(OptionEnum.MAIL_SMTP_USERNAME.getValue());
         options.remove(OptionEnum.MAIL_SMTP_PASSWORD.getValue());
-        return options.isEmpty() ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(options);
+        return MapUtils.isEmpty(options) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(options);
     }
 
     @GetMapping("/{name}")

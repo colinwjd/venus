@@ -42,7 +42,7 @@ public class EventVO {
     private String content;
 
     public static EventVO buildWith(Event event) {
-        return EventVO.builder()
+        return event == null ? null : EventVO.builder()
                 .id(event.getId())
                 .createTime(event.getCreateTime())
                 .title(event.getTitle())

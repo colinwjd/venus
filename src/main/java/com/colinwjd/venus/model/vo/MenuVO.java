@@ -44,7 +44,7 @@ public class MenuVO {
     private String target;
 
     public static MenuVO buildWith(Menu menu) {
-        return MenuVO.builder()
+        return menu == null ? null : MenuVO.builder()
                 .name(menu.getName())
                 .url(menu.getUrl())
                 .number(menu.getNumber())

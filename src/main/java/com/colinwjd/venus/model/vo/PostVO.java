@@ -93,7 +93,7 @@ public class PostVO {
     private List<TagVO> tags;
 
     public static PostVO buildWith(Post post) {
-        return PostVO.builder()
+        return post == null ? null : PostVO.builder()
                 .id(post.getId())
                 .createTime(post.getCreateTime())
                 .modifyTime(post.getModifyTime())

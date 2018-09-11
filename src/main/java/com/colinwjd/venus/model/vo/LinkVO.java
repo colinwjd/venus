@@ -34,7 +34,7 @@ public class LinkVO {
     private String desc;
 
     public static LinkVO buildWith(Link link) {
-        return LinkVO.builder()
+        return link == null ? null : LinkVO.builder()
                 .name(link.getName())
                 .url(link.getUrl())
                 .desc(link.getDesc())

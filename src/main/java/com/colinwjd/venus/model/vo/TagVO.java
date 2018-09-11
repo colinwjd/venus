@@ -29,7 +29,7 @@ public class TagVO {
     private String url;
 
     public static TagVO buildWith(Tag tag) {
-        return TagVO.builder()
+        return tag == null ? null : TagVO.builder()
                 .name(tag.getName())
                 .url(tag.getUrl())
                 .build();

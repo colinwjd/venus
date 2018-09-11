@@ -59,7 +59,7 @@ public class UserVO {
     private String github;
 
     public static UserVO buildWith(User user) {
-        return UserVO.builder()
+        return user == null ? null : UserVO.builder()
                 .id(user.getId())
                 .name(user.getName())
                 .nick(user.getNick())

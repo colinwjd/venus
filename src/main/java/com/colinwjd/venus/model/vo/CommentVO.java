@@ -63,7 +63,7 @@ public class CommentVO {
     private List<CommentVO> children;
 
     public static CommentVO buildWith(Comment comment) {
-        return CommentVO.builder()
+        return comment == null ? null : CommentVO.builder()
                 .id(comment.getId())
                 .createTime(comment.getCreateTime())
                 .modifyTime(comment.getModifyTime())

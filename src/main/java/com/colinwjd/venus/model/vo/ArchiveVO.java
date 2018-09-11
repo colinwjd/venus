@@ -39,7 +39,7 @@ public class ArchiveVO {
     private List<PostVO> posts;
 
     public static ArchiveVO buildWith(Archive archive) {
-        return ArchiveVO.builder()
+        return archive == null ? null : ArchiveVO.builder()
                 .year(archive.getYear())
                 .month(archive.getMonth())
                 .count(archive.getCount())

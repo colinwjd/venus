@@ -69,7 +69,7 @@ public class GalleryVO {
     private String thumbnailUrl;
 
     public static GalleryVO buildWith(Gallery gallery) {
-        return GalleryVO.builder()
+        return gallery == null ? null : GalleryVO.builder()
                 .id(gallery.getId())
                 .createTime(gallery.getCreateTime())
                 .modifyTime(gallery.getModifyTime())

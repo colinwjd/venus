@@ -34,7 +34,7 @@ public class CategoryVO {
     private String url;
 
     public static CategoryVO buildWith(Category category) {
-        return CategoryVO.builder()
+        return category == null ? null : CategoryVO.builder()
                 .name(category.getName())
                 .desc(category.getDesc())
                 .url(category.getUrl())

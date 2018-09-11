@@ -1,7 +1,11 @@
 package com.colinwjd.venus.model.vo;
 
+import com.colinwjd.venus.model.bo.Archive;
+import lombok.Builder;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -11,6 +15,7 @@ import java.util.List;
  * @date 2018/9/8
  */
 @Data
+@Builder
 public class ArchiveVO {
 
     /**
@@ -32,4 +37,20 @@ public class ArchiveVO {
      * 文章列表
      */
     private List<PostVO> posts;
+
+    public static ArchiveVO buildWith(Archive archive) {
+        return ArchiveVO.builder()
+                .year(archive.getYear())
+                .month(archive.getMonth())
+                .count(archive.getCount())
+                .posts(PostVO.buildWith(archive.getPosts()))
+                .build();
+    }
+
+    public static List<ArchiveVO> buildWith(Collection<Archive> archives) {
+        if (archives == null) return null;
+        List<ArchiveVO> result = new ArrayList<>(archives.size());
+        archives.forEach(archive -> result.add(buildWith(archive)));
+        return result;
+    }
 }

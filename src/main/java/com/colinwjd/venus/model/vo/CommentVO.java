@@ -1,9 +1,13 @@
 package com.colinwjd.venus.model.vo;
 
+import com.colinwjd.venus.model.entity.Comment;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -13,6 +17,7 @@ import java.util.List;
  * @date 2018/9/7
  */
 @Data
+@Builder
 public class CommentVO {
 
     /**
@@ -35,7 +40,7 @@ public class CommentVO {
     /**
      * 评论用户
      */
-    private String user;
+    private UserVO user;
 
     /**
      * 评论内容
@@ -56,4 +61,24 @@ public class CommentVO {
      * 子评论列表
      */
     private List<CommentVO> children;
+
+    public static CommentVO buildWith(Comment comment) {
+        return CommentVO.builder()
+                .id(comment.getId())
+                .createTime(comment.getCreateTime())
+                .modifyTime(comment.getModifyTime())
+                .user(UserVO.buildWith(comment.getUser()))
+                .content(comment.getContent())
+                .ua(comment.getUa())
+                .isAuthor(comment.getIsAuthor())
+                .children(buildWith(comment.getChildren()))
+                .build();
+    }
+
+    public static List<CommentVO> buildWith(Collection<Comment> comments) {
+        if (comments == null) return null;
+        List<CommentVO> result = new ArrayList<>(comments.size());
+        comments.forEach(comment -> result.add(buildWith(comment)));
+        return result;
+    }
 }

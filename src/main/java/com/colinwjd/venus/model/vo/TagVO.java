@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class TagVO {
                 .build();
     }
 
-    public static List<TagVO> buildWith(List<Tag> tags) {
+    public static List<TagVO> buildWith(Collection<Tag> tags) {
         if (tags == null) return null;
         List<TagVO> result = new ArrayList<>(tags.size());
         tags.forEach(tag -> result.add(buildWith(tag)));

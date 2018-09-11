@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -40,7 +41,7 @@ public class CategoryVO {
                 .build();
     }
 
-    public static List<CategoryVO> buildWith(List<Category> categories) {
+    public static List<CategoryVO> buildWith(Collection<Category> categories) {
         if (categories == null) return null;
         List<CategoryVO> result = new ArrayList<>(categories.size());
         categories.forEach(category -> result.add(buildWith(category)));

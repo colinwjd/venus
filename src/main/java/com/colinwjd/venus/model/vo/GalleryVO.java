@@ -1,9 +1,14 @@
 package com.colinwjd.venus.model.vo;
 
+import com.colinwjd.venus.model.entity.Gallery;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 /**
  * 图库 视图对象
@@ -12,6 +17,7 @@ import java.time.LocalDateTime;
  * @date 2018/9/7
  */
 @Data
+@Builder
 public class GalleryVO {
 
     /**
@@ -61,4 +67,25 @@ public class GalleryVO {
      * 缩略图地址
      */
     private String thumbnailUrl;
+
+    public static GalleryVO buildWith(Gallery gallery) {
+        return GalleryVO.builder()
+                .id(gallery.getId())
+                .createTime(gallery.getCreateTime())
+                .modifyTime(gallery.getModifyTime())
+                .name(gallery.getName())
+                .desc(gallery.getDesc())
+                .filmingTime(gallery.getFilmingTime())
+                .filmingLocation(gallery.getFilmingLocation())
+                .url(gallery.getUrl())
+                .thumbnailUrl(gallery.getThumbnailUrl())
+                .build();
+    }
+
+    public static List<GalleryVO> buildWith(Collection<Gallery> galleries) {
+        if (galleries == null) return null;
+        List<GalleryVO> result = new ArrayList<>(galleries.size());
+        galleries.forEach(gallery -> result.add(buildWith(gallery)));
+        return result;
+    }
 }

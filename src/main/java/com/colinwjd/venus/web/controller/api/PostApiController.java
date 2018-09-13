@@ -53,4 +53,22 @@ public class PostApiController {
         List<PostVO> result = PostVO.buildWith(posts);
         return CollectionUtils.isEmpty(result) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(result);
     }
+
+    @GetMapping("/popular")
+    public JsonResp<List<PostVO>> popularPost() {
+        List<PostVO> posts = PostVO.buildWith(postService.popularPost());
+        return CollectionUtils.isEmpty(posts) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(posts);
+    }
+
+    @GetMapping("/{id}")
+    public JsonResp<PostVO> findById(@PathVariable Long id) {
+        PostVO post = PostVO.buildWith(postService.findByIdAndType(id, PostTypeEnum.POST.getValue()));
+        return post == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(post);
+    }
+
+    @GetMapping("/latest/{n}")
+    public JsonResp<List<PostVO>> findLatestN(@PathVariable Integer n) {
+        List<PostVO> posts = PostVO.buildWith(postService.findLatestN(n));
+        return CollectionUtils.isEmpty(posts) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(posts);
+    }
 }

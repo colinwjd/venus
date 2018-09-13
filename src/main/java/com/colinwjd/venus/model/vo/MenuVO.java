@@ -54,7 +54,9 @@ public class MenuVO {
     }
 
     public static List<MenuVO> buildWith(Collection<Menu> menus) {
-        if (menus == null) return null;
+        if (menus == null) {
+            return null;
+        }
         List<MenuVO> result = new ArrayList<>(menus.size());
         menus.forEach(menu -> result.add(buildWith(menu)));
         return result;

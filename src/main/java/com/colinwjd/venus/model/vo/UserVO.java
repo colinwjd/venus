@@ -72,7 +72,9 @@ public class UserVO {
     }
 
     public static List<UserVO> buildWith(Collection<User> users) {
-        if (users == null) return null;
+        if (users == null) {
+            return null;
+        }
         List<UserVO> result = new ArrayList<>(users.size());
         users.forEach(user -> result.add(buildWith(user)));
         return result;

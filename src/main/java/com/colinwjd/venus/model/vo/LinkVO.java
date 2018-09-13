@@ -42,7 +42,9 @@ public class LinkVO {
     }
 
     public static List<LinkVO> buildWith(Collection<Link> links) {
-        if (links == null) return null;
+        if (links == null) {
+            return null;
+        }
         List<LinkVO> result = new ArrayList<>(links.size());
         links.forEach(link -> result.add(buildWith(link)));
         return result;

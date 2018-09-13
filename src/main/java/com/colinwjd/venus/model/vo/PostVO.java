@@ -112,7 +112,9 @@ public class PostVO {
     }
 
     public static List<PostVO> buildWith(Collection<Post> posts) {
-        if (posts == null) return null;
+        if (posts == null) {
+            return null;
+        }
         List<PostVO> result = new ArrayList<>(posts.size());
         posts.forEach(post -> result.add(buildWith(post)));
         return result;

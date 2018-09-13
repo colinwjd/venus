@@ -76,7 +76,9 @@ public class CommentVO {
     }
 
     public static List<CommentVO> buildWith(Collection<Comment> comments) {
-        if (comments == null) return null;
+        if (comments == null) {
+            return null;
+        }
         List<CommentVO> result = new ArrayList<>(comments.size());
         comments.forEach(comment -> result.add(buildWith(comment)));
         return result;

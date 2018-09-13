@@ -42,7 +42,9 @@ public class CategoryVO {
     }
 
     public static List<CategoryVO> buildWith(Collection<Category> categories) {
-        if (categories == null) return null;
+        if (categories == null) {
+            return null;
+        }
         List<CategoryVO> result = new ArrayList<>(categories.size());
         categories.forEach(category -> result.add(buildWith(category)));
         return result;

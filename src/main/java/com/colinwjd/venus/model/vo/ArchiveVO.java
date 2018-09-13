@@ -48,7 +48,9 @@ public class ArchiveVO {
     }
 
     public static List<ArchiveVO> buildWith(Collection<Archive> archives) {
-        if (archives == null) return null;
+        if (archives == null) {
+            return null;
+        }
         List<ArchiveVO> result = new ArrayList<>(archives.size());
         archives.forEach(archive -> result.add(buildWith(archive)));
         return result;

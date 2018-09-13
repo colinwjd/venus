@@ -83,7 +83,9 @@ public class GalleryVO {
     }
 
     public static List<GalleryVO> buildWith(Collection<Gallery> galleries) {
-        if (galleries == null) return null;
+        if (galleries == null) {
+            return null;
+        }
         List<GalleryVO> result = new ArrayList<>(galleries.size());
         galleries.forEach(gallery -> result.add(buildWith(gallery)));
         return result;

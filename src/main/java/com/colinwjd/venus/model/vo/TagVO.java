@@ -36,7 +36,9 @@ public class TagVO {
     }
 
     public static List<TagVO> buildWith(Collection<Tag> tags) {
-        if (tags == null) return null;
+        if (tags == null) {
+            return null;
+        }
         List<TagVO> result = new ArrayList<>(tags.size());
         tags.forEach(tag -> result.add(buildWith(tag)));
         return result;

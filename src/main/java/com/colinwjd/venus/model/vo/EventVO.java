@@ -51,7 +51,9 @@ public class EventVO {
     }
 
     public static List<EventVO> buildWith(Collection<Event> events) {
-        if (events == null) return null;
+        if (events == null) {
+            return null;
+        }
         List<EventVO> result = new ArrayList<>(events.size());
         events.forEach(event -> result.add(buildWith(event)));
         return result;

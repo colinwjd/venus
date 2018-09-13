@@ -7,7 +7,6 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -50,11 +49,11 @@ public class EventVO {
                 .build();
     }
 
-    public static List<EventVO> buildWith(Collection<Event> events) {
+    public static List<EventVO> buildWith(Iterable<Event> events) {
         if (events == null) {
             return null;
         }
-        List<EventVO> result = new ArrayList<>(events.size());
+        List<EventVO> result = new ArrayList<>();
         events.forEach(event -> result.add(buildWith(event)));
         return result;
     }

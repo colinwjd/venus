@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -53,11 +52,11 @@ public class MenuVO {
                 .build();
     }
 
-    public static List<MenuVO> buildWith(Collection<Menu> menus) {
+    public static List<MenuVO> buildWith(Iterable<Menu> menus) {
         if (menus == null) {
             return null;
         }
-        List<MenuVO> result = new ArrayList<>(menus.size());
+        List<MenuVO> result = new ArrayList<>();
         menus.forEach(menu -> result.add(buildWith(menu)));
         return result;
     }

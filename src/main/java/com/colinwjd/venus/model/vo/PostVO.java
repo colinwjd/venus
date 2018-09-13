@@ -7,7 +7,6 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -111,11 +110,11 @@ public class PostVO {
                 .build();
     }
 
-    public static List<PostVO> buildWith(Collection<Post> posts) {
+    public static List<PostVO> buildWith(Iterable<Post> posts) {
         if (posts == null) {
             return null;
         }
-        List<PostVO> result = new ArrayList<>(posts.size());
+        List<PostVO> result = new ArrayList<>();
         posts.forEach(post -> result.add(buildWith(post)));
         return result;
     }

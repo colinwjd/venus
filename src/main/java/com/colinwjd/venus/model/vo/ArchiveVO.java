@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -47,11 +46,11 @@ public class ArchiveVO {
                 .build();
     }
 
-    public static List<ArchiveVO> buildWith(Collection<Archive> archives) {
+    public static List<ArchiveVO> buildWith(Iterable<Archive> archives) {
         if (archives == null) {
             return null;
         }
-        List<ArchiveVO> result = new ArrayList<>(archives.size());
+        List<ArchiveVO> result = new ArrayList<>();
         archives.forEach(archive -> result.add(buildWith(archive)));
         return result;
     }

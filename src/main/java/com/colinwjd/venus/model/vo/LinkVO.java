@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -41,11 +40,11 @@ public class LinkVO {
                 .build();
     }
 
-    public static List<LinkVO> buildWith(Collection<Link> links) {
+    public static List<LinkVO> buildWith(Iterable<Link> links) {
         if (links == null) {
             return null;
         }
-        List<LinkVO> result = new ArrayList<>(links.size());
+        List<LinkVO> result = new ArrayList<>();
         links.forEach(link -> result.add(buildWith(link)));
         return result;
     }

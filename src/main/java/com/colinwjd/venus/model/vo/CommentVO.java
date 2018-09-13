@@ -7,7 +7,6 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -75,11 +74,11 @@ public class CommentVO {
                 .build();
     }
 
-    public static List<CommentVO> buildWith(Collection<Comment> comments) {
+    public static List<CommentVO> buildWith(Iterable<Comment> comments) {
         if (comments == null) {
             return null;
         }
-        List<CommentVO> result = new ArrayList<>(comments.size());
+        List<CommentVO> result = new ArrayList<>();
         comments.forEach(comment -> result.add(buildWith(comment)));
         return result;
     }

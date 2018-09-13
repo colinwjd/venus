@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -71,11 +70,11 @@ public class UserVO {
                 .build();
     }
 
-    public static List<UserVO> buildWith(Collection<User> users) {
+    public static List<UserVO> buildWith(Iterable<User> users) {
         if (users == null) {
             return null;
         }
-        List<UserVO> result = new ArrayList<>(users.size());
+        List<UserVO> result = new ArrayList<>();
         users.forEach(user -> result.add(buildWith(user)));
         return result;
     }

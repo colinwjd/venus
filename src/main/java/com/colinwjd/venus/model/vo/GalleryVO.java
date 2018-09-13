@@ -7,7 +7,6 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -82,11 +81,11 @@ public class GalleryVO {
                 .build();
     }
 
-    public static List<GalleryVO> buildWith(Collection<Gallery> galleries) {
+    public static List<GalleryVO> buildWith(Iterable<Gallery> galleries) {
         if (galleries == null) {
             return null;
         }
-        List<GalleryVO> result = new ArrayList<>(galleries.size());
+        List<GalleryVO> result = new ArrayList<>();
         galleries.forEach(gallery -> result.add(buildWith(gallery)));
         return result;
     }

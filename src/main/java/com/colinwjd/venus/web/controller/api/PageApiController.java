@@ -2,7 +2,7 @@ package com.colinwjd.venus.web.controller.api;
 
 import com.colinwjd.venus.common.enums.PostTypeEnum;
 import com.colinwjd.venus.model.bo.JsonResp;
-import com.colinwjd.venus.model.entity.Post;
+import com.colinwjd.venus.model.vo.PostVO;
 import com.colinwjd.venus.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,8 +28,8 @@ public class PageApiController {
     }
 
     @GetMapping("/{id}")
-    public JsonResp<Post> findPageById(Long id) {
-        Post post = postService.findByIdAndType(id, PostTypeEnum.PAGE.getValue());
+    public JsonResp<PostVO> findPageById(Long id) {
+        PostVO post = PostVO.buildWith(postService.findByIdAndType(id, PostTypeEnum.PAGE.getValue()));
         return post == null ? JsonResp.httpStatus(HttpStatus.NOT_FOUND) : JsonResp.success(post);
     }
 }

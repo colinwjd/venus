@@ -6,6 +6,7 @@ import com.colinwjd.venus.common.enums.PostStatusEnum;
 import com.colinwjd.venus.common.enums.PostTypeEnum;
 import com.colinwjd.venus.model.bo.JsonResp;
 import com.colinwjd.venus.model.entity.Post;
+import com.colinwjd.venus.model.vo.ArchiveVO;
 import com.colinwjd.venus.model.vo.PostVO;
 import com.colinwjd.venus.service.PostService;
 import org.apache.commons.collections4.CollectionUtils;
@@ -70,5 +71,17 @@ public class PostApiController {
     public JsonResp<List<PostVO>> findLatestN(@PathVariable Integer n) {
         List<PostVO> posts = PostVO.buildWith(postService.findLatestN(n));
         return CollectionUtils.isEmpty(posts) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(posts);
+    }
+
+    @GetMapping("/archive/year")
+    public JsonResp<List<ArchiveVO>> archiveByYear() {
+        List<ArchiveVO> archives = ArchiveVO.buildWith(postService.archiveByYear());
+        return CollectionUtils.isEmpty(archives) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(archives);
+    }
+
+    @GetMapping("/archive/year/month")
+    public JsonResp<List<ArchiveVO>> archiveByYearAndMonth() {
+        List<ArchiveVO> archives = ArchiveVO.buildWith(postService.archiveByYearAndMonth());
+        return CollectionUtils.isEmpty(archives) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(archives);
     }
 }

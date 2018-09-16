@@ -25,4 +25,9 @@ public class GlobalProperty {
      * session key
      */
     public static final String USER_SESSION_KEY = "user_session";
+
+    /**
+     * 默认首页文章数量
+     */
+    public static final int DEFAULT_INDEX_POST_NUM = 10;
 }

@@ -36,8 +36,6 @@ public class PostApiController {
 
     private final PostService postService;
 
-    private static final int DEFAULT_INDEX_POST_NUM = 10;
-
     @Autowired
     public PostApiController(PostService postService) {
         this.postService = postService;
@@ -45,7 +43,7 @@ public class PostApiController {
 
     @GetMapping("/page/{page}")
     public JsonResp<List<PostVO>> findByPage(@PathVariable Integer page) {
-        Integer size = DEFAULT_INDEX_POST_NUM;
+        Integer size = GlobalProperty.DEFAULT_INDEX_POST_NUM;
         if (StringUtils.isNotBlank(GlobalProperty.OPTIONS.get(OptionEnum.INDEX_POST_NUM.getValue()))) {
             size = Integer.parseInt(GlobalProperty.OPTIONS.get(OptionEnum.INDEX_POST_NUM.getValue()));
         }

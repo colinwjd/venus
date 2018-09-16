@@ -49,7 +49,7 @@ public class PageController extends AbstractController {
         return this.render("link");
     }
 
-    @GetMapping("/page/{url}")
+    @GetMapping("/p/{url}")
     public String page(@PathVariable String url, Model model) {
         Post post = postService.findByUrl(url);
         PostVO postVO = PostVO.buildWith(post);

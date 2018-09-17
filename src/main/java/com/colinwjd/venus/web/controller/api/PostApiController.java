@@ -71,6 +71,12 @@ public class PostApiController {
         return CollectionUtils.isEmpty(posts) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(posts);
     }
 
+    @GetMapping("/search/{keyword}")
+    public JsonResp<List<PostVO>> search(String keyword) {
+        List<PostVO> posts = PostVO.buildWith(postService.search(keyword));
+        return CollectionUtils.isEmpty(posts) ? JsonResp.httpStatus(HttpStatus.NO_CONTENT) : JsonResp.success(posts);
+    }
+
     @GetMapping("/archive/year")
     public JsonResp<List<ArchiveVO>> archiveByYear() {
         List<ArchiveVO> archives = ArchiveVO.buildWith(postService.archiveByYear());

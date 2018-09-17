@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.entity.Category;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class CategoryVO {
+public class CategoryVO implements Serializable {
+
+    private static final long serialVersionUID = 71919791957245046L;
 
     /**
      * 类目名称

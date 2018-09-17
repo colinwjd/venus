@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.entity.User;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import java.util.List;
  */
 @Data
 @Builder
-public class UserVO {
+public class UserVO implements Serializable {
 
+    private static final long serialVersionUID = 1136656334814542016L;
+    
     /**
      * 用户ID
      */

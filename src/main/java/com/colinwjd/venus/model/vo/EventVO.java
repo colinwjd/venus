@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class EventVO {
+public class EventVO implements Serializable {
+
+    private static final long serialVersionUID = -4666399889089477662L;
 
     /**
      * 事件ID

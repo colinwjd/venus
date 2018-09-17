@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.entity.Tag;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,10 @@ import java.util.List;
  */
 @Data
 @Builder
-public class TagVO {
+public class TagVO implements Serializable {
 
+    private static final long serialVersionUID = 9119088141970605290L;
+    
     /**
      * 标签名称
      */

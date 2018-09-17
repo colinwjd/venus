@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class CommentVO {
+public class CommentVO implements Serializable {
+
+    private static final long serialVersionUID = 6756409668707645779L;
 
     /**
      * 评论ID

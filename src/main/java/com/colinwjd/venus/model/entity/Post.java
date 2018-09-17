@@ -1,6 +1,7 @@
 package com.colinwjd.venus.model.entity;
 
 import lombok.Data;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -29,6 +30,7 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "venus_post")
+@Document(indexName = "venus", type = "venus_post", refreshInterval = "0s")
 public class Post implements Serializable {
 
     private static final long serialVersionUID = -8431474702714505942L;

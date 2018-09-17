@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +18,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class PostVO {
+public class PostVO implements Serializable {
+
+    private static final long serialVersionUID = 1160513606043742810L;
 
     /**
      * 文章ID

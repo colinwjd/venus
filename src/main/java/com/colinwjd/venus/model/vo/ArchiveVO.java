@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.bo.Archive;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class ArchiveVO {
+public class ArchiveVO implements Serializable {
+
+    private static final long serialVersionUID = -283190910263249079L;
 
     /**
      * 年份

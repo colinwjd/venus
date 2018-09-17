@@ -6,6 +6,7 @@ import com.colinwjd.venus.model.entity.Category;
 import com.colinwjd.venus.model.entity.Post;
 import com.colinwjd.venus.model.entity.Tag;
 import com.colinwjd.venus.model.bo.Archive;
+import com.colinwjd.venus.repository.PostEsRepository;
 import com.colinwjd.venus.repository.PostRepository;
 import com.colinwjd.venus.service.PostService;
 import com.hankcs.hanlp.HanLP;
@@ -34,10 +35,12 @@ import java.util.Set;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final PostEsRepository postEsRepository;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, PostEsRepository postEsRepository) {
         this.postRepository = postRepository;
+        this.postEsRepository = postEsRepository;
     }
 
     @Override
@@ -209,11 +212,11 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<Post> search(String keyword) {
-        return postRepository.findByTitleLikeOrContentLike(keyword);
+        return postEsRepository.findByContentLike(keyword);
     }
 
     @Override
     public Page<Post> search(String keyword, Pageable pageable) {
-        return postRepository.findByTitleLikeOrContentLike(keyword, pageable);
+        return postEsRepository.findByContentLike(keyword, pageable);
     }
 }

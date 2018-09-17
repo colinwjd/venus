@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.entity.Menu;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class MenuVO {
+public class MenuVO implements Serializable {
+
+    private static final long serialVersionUID = -9135833893194238408L;
 
     /**
      * 菜单名称

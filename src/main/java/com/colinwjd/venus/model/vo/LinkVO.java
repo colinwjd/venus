@@ -4,6 +4,7 @@ import com.colinwjd.venus.model.entity.Link;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ import java.util.List;
  */
 @Data
 @Builder
-public class LinkVO {
+public class LinkVO implements Serializable {
+
+    private static final long serialVersionUID = 5927777353232692102L;
 
     /**
      * 友情链接名称

@@ -9,7 +9,7 @@ import java.util.Map;
  * @author Colin Wang
  * @date 2018/8/20
  */
-public class GlobalProperty {
+public final class GlobalProperty {
 
     /**
      * 全部配置项

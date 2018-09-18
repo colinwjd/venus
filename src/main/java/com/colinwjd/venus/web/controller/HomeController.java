@@ -1,5 +1,7 @@
 package com.colinwjd.venus.web.controller;
 
+import java.util.List;
+
 import com.colinwjd.venus.common.GlobalProperty;
 import com.colinwjd.venus.common.enums.OptionEnum;
 import com.colinwjd.venus.common.enums.PostStatusEnum;
@@ -13,14 +15,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.List;
 
 /**
  * 主页控制器
@@ -50,7 +48,8 @@ public class HomeController extends AbstractController {
             size = Integer.parseInt(GlobalProperty.OPTIONS.get(OptionEnum.INDEX_POST_NUM.getValue()));
         }
         Pageable pageable = PageRequest.of(page - 1, size, Sort.by(Sort.Direction.DESC, "createTime"));
-        Page<Post> posts = postService.findByTypeAndStatus(PostTypeEnum.POST.getValue(), PostStatusEnum.PUBLISHED.getValue(), pageable);
+        Page<Post> posts = postService.findByTypeAndStatus(PostTypeEnum.POST.getValue(),
+            PostStatusEnum.PUBLISHED.getValue(), pageable);
         List<PostVO> result = PostVO.buildWith(posts);
         model.addAttribute("is_index", true);
         model.addAttribute("posts", result);
@@ -58,8 +57,8 @@ public class HomeController extends AbstractController {
         return this.render("index");
     }
 
-    @PostMapping("/search")
-    public String search(Model model, @Param("keyword") String keyword) {
+    @GetMapping("/search/{keyword}")
+    public String search(Model model, @PathVariable String keyword) {
         List<PostVO> posts = PostVO.buildWith(postService.search(keyword));
         model.addAttribute("posts", posts);
         return this.render("index");

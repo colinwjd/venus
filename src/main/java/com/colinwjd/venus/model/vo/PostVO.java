@@ -1,14 +1,14 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Post;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Post;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 文章 视图对象
@@ -96,21 +96,21 @@ public class PostVO implements Serializable {
 
     public static PostVO buildWith(Post post) {
         return post == null ? null : PostVO.builder()
-                .id(post.getId())
-                .createTime(post.getCreateTime())
-                .modifyTime(post.getModifyTime())
-                .user(UserVO.buildWith(post.getUser()))
-                .title(post.getTitle())
-                .summary(post.getSummary())
-                .contentMd(post.getContentMd())
-                .content(post.getContent())
-                .url(post.getUrl())
-                .thumbnail(post.getThumbnail())
-                .visitCount(post.getVisitCount())
-                .disableComment(post.getDisableComment())
-                .categories(CategoryVO.buildWith(post.getCategories()))
-                .tags(TagVO.buildWith(post.getTags()))
-                .build();
+            .id(post.getId())
+            .createTime(post.getCreateTime())
+            .modifyTime(post.getModifyTime())
+            .user(UserVO.buildWith(post.getUser()))
+            .title(post.getTitle())
+            .summary(post.getSummary())
+            .contentMd(post.getContentMd())
+            .content(post.getContent())
+            .url(post.getUrl())
+            .thumbnail(post.getThumbnail())
+            .visitCount(post.getVisitCount())
+            .disableComment(post.getDisableComment())
+            .categories(CategoryVO.buildWith(post.getCategories()))
+            .tags(TagVO.buildWith(post.getTags()))
+            .build();
     }
 
     public static List<PostVO> buildWith(Iterable<Post> posts) {

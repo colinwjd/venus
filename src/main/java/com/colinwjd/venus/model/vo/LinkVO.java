@@ -1,12 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Link;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Link;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 友情链接 视图对象
@@ -37,10 +37,10 @@ public class LinkVO implements Serializable {
 
     public static LinkVO buildWith(Link link) {
         return link == null ? null : LinkVO.builder()
-                .name(link.getName())
-                .url(link.getUrl())
-                .desc(link.getDesc())
-                .build();
+            .name(link.getName())
+            .url(link.getUrl())
+            .desc(link.getDesc())
+            .build();
     }
 
     public static List<LinkVO> buildWith(Iterable<Link> links) {

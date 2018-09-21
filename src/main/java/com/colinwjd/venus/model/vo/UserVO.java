@@ -1,12 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.User;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.User;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 用户 视图对象
@@ -19,7 +19,7 @@ import java.util.List;
 public class UserVO implements Serializable {
 
     private static final long serialVersionUID = 1136656334814542016L;
-    
+
     /**
      * 用户ID
      */
@@ -62,15 +62,15 @@ public class UserVO implements Serializable {
 
     public static UserVO buildWith(User user) {
         return user == null ? null : UserVO.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .nick(user.getNick())
-                .email(user.getEmail())
-                .avatar(user.getAvatar())
-                .desc(user.getDesc())
-                .url(user.getUrl())
-                .github(user.getGithub())
-                .build();
+            .id(user.getId())
+            .name(user.getName())
+            .nick(user.getNick())
+            .email(user.getEmail())
+            .avatar(user.getAvatar())
+            .desc(user.getDesc())
+            .url(user.getUrl())
+            .github(user.getGithub())
+            .build();
     }
 
     public static List<UserVO> buildWith(Iterable<User> users) {

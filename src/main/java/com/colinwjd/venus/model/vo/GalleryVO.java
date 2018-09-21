@@ -1,14 +1,14 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Gallery;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Gallery;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 图库 视图对象
@@ -72,16 +72,16 @@ public class GalleryVO implements Serializable {
 
     public static GalleryVO buildWith(Gallery gallery) {
         return gallery == null ? null : GalleryVO.builder()
-                .id(gallery.getId())
-                .createTime(gallery.getCreateTime())
-                .modifyTime(gallery.getModifyTime())
-                .name(gallery.getName())
-                .desc(gallery.getDesc())
-                .filmingTime(gallery.getFilmingTime())
-                .filmingLocation(gallery.getFilmingLocation())
-                .url(gallery.getUrl())
-                .thumbnailUrl(gallery.getThumbnailUrl())
-                .build();
+            .id(gallery.getId())
+            .createTime(gallery.getCreateTime())
+            .modifyTime(gallery.getModifyTime())
+            .name(gallery.getName())
+            .desc(gallery.getDesc())
+            .filmingTime(gallery.getFilmingTime())
+            .filmingLocation(gallery.getFilmingLocation())
+            .url(gallery.getUrl())
+            .thumbnailUrl(gallery.getThumbnailUrl())
+            .build();
     }
 
     public static List<GalleryVO> buildWith(Iterable<Gallery> galleries) {

@@ -1,14 +1,14 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Comment;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Comment;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 评论 视图对象
@@ -66,15 +66,15 @@ public class CommentVO implements Serializable {
 
     public static CommentVO buildWith(Comment comment) {
         return comment == null ? null : CommentVO.builder()
-                .id(comment.getId())
-                .createTime(comment.getCreateTime())
-                .modifyTime(comment.getModifyTime())
-                .user(UserVO.buildWith(comment.getUser()))
-                .content(comment.getContent())
-                .ua(comment.getUa())
-                .isAuthor(comment.getIsAuthor())
-                .children(buildWith(comment.getChildren()))
-                .build();
+            .id(comment.getId())
+            .createTime(comment.getCreateTime())
+            .modifyTime(comment.getModifyTime())
+            .user(UserVO.buildWith(comment.getUser()))
+            .content(comment.getContent())
+            .ua(comment.getUa())
+            .isAuthor(comment.getIsAuthor())
+            .children(buildWith(comment.getChildren()))
+            .build();
     }
 
     public static List<CommentVO> buildWith(Iterable<Comment> comments) {

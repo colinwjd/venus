@@ -1,12 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Menu;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Menu;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 菜单 视图对象
@@ -47,12 +47,12 @@ public class MenuVO implements Serializable {
 
     public static MenuVO buildWith(Menu menu) {
         return menu == null ? null : MenuVO.builder()
-                .name(menu.getName())
-                .url(menu.getUrl())
-                .number(menu.getNumber())
-                .icon(menu.getIcon())
-                .target(menu.getTarget())
-                .build();
+            .name(menu.getName())
+            .url(menu.getUrl())
+            .number(menu.getNumber())
+            .icon(menu.getIcon())
+            .target(menu.getTarget())
+            .build();
     }
 
     public static List<MenuVO> buildWith(Iterable<Menu> menus) {

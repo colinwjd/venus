@@ -1,12 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Category;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Category;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 类目 视图对象
@@ -37,10 +37,10 @@ public class CategoryVO implements Serializable {
 
     public static CategoryVO buildWith(Category category) {
         return category == null ? null : CategoryVO.builder()
-                .name(category.getName())
-                .desc(category.getDesc())
-                .url(category.getUrl())
-                .build();
+            .name(category.getName())
+            .desc(category.getDesc())
+            .url(category.getUrl())
+            .build();
     }
 
     public static List<CategoryVO> buildWith(Iterable<Category> categories) {

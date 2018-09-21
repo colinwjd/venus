@@ -1,12 +1,12 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.bo.Archive;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.bo.Archive;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 文章归档 视图对象
@@ -42,11 +42,11 @@ public class ArchiveVO implements Serializable {
 
     public static ArchiveVO buildWith(Archive archive) {
         return archive == null ? null : ArchiveVO.builder()
-                .year(archive.getYear())
-                .month(archive.getMonth())
-                .count(archive.getCount())
-                .posts(PostVO.buildWith(archive.getPosts()))
-                .build();
+            .year(archive.getYear())
+            .month(archive.getMonth())
+            .count(archive.getCount())
+            .posts(PostVO.buildWith(archive.getPosts()))
+            .build();
     }
 
     public static List<ArchiveVO> buildWith(Iterable<Archive> archives) {

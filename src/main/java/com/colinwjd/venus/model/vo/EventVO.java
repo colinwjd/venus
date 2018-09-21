@@ -1,14 +1,14 @@
 package com.colinwjd.venus.model.vo;
 
-import com.colinwjd.venus.model.entity.Event;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.Builder;
-import lombok.Data;
-
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.colinwjd.venus.model.entity.Event;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Builder;
+import lombok.Data;
 
 /**
  * 事件 视图对象
@@ -45,11 +45,11 @@ public class EventVO implements Serializable {
 
     public static EventVO buildWith(Event event) {
         return event == null ? null : EventVO.builder()
-                .id(event.getId())
-                .createTime(event.getCreateTime())
-                .title(event.getTitle())
-                .content(event.getContent())
-                .build();
+            .id(event.getId())
+            .createTime(event.getCreateTime())
+            .title(event.getTitle())
+            .content(event.getContent())
+            .build();
     }
 
     public static List<EventVO> buildWith(Iterable<Event> events) {
